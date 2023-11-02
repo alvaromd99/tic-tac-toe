@@ -1,11 +1,1 @@
-:root {
-	--bg-color: #1a2b33;
-	--primary-color: #31c6be;
-	--secondary-color: #f2b136;
-	--letter-color: #aabfca;
-}
 
-.App {
-	min-height: 100vh;
-	background-color: var(--bg-color);
-}
