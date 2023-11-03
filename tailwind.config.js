@@ -4,6 +4,7 @@ export default {
 	theme: {
 		colors: {
 			darkBlue: '#1a2b33',
+			squareColor: '#1E3640',
 			primary: '#31c6be',
 			secondary: '#f2b136',
 			gray: '#aabfca',
