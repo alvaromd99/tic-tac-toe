@@ -1,10 +1,17 @@
+import { useState } from 'react'
 import './App.css'
 import Square from './components/Square'
 /* import { IconO } from './icons/IconO'
 import { IconX } from './icons/IconX' */
 
+const TURNS = {
+	X: 'x',
+	O: 'o',
+}
+
 function App() {
-	const board = Array(9).fill(null)
+	const [board, setBoard] = useState(Array(9).fill(null))
+
 	return (
 		<div className='bg-darkBlue min-h-screen flex items-center justify-center'>
 			<div className='grid grid-cols-3 gap-8'>
