@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { useState } from 'react'
 import Square from './Square'
 import IconX from '../icons/IconX'
@@ -31,9 +30,4 @@ export const Board = ({ turn, updateTurn }) => {
 			))}
 		</div>
 	)
-}
-
-Board.propTypes = {
-	turn: PropTypes.string.isRequired,
-	updateTurn: PropTypes.func.isRequired,
 }

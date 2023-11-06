@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import IconX from '../icons/IconX'
 import IconO from '../icons/IconO'
 import IconReset from '../icons/IconReset'
@@ -19,8 +18,4 @@ export const Header = ({ turn }) => {
 			</button>
 		</div>
 	)
-}
-
-Header.propTypes = {
-	turn: PropTypes.string.isRequired,
 }
