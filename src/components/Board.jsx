@@ -1,24 +1,22 @@
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 import Square from './Square'
-import { IconX } from '../icons/IconX'
-import { IconO } from '../icons/IconO'
+import IconX from '../icons/IconX'
+import IconO from '../icons/IconO'
 
 const initialState = Array(9).fill(null)
-const TURNS = {
-	X: 'x',
-	O: 'o',
-}
 
-export const Board = () => {
+export const Board = ({ turn, updateTurn }) => {
 	const [board, setBoard] = useState(initialState)
-	const [turn, setTurn] = useState(TURNS.X)
 
 	const updateBoard = (index) => {
-		const newBoard = board
-		newBoard[index] = 'x'
+		const newBoard = [...board]
+		newBoard[index] = turn
 		setBoard(newBoard)
+		updateTurn(turn)
 	}
 
+	console.log(turn)
 	return (
 		<div className='grid grid-cols-3 gap-8'>
 			{board.map((sq, index) => (
@@ -27,10 +25,15 @@ export const Board = () => {
 						<IconX width='7em' height='7em' color='#31c6be' />
 					)}
 					{board[index] === 'o' && (
-						<IconO width='7em' height='7em' color='#f2b136' />
+						<IconO width='6em' height='6em' color='#f2b136' />
 					)}
 				</Square>
 			))}
 		</div>
 	)
+}
+
+Board.propTypes = {
+	turn: PropTypes.string.isRequired,
+	updateTurn: PropTypes.func.isRequired,
 }
