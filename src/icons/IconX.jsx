@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-
 export default function IconX({ width, height, color, ...restProps }) {
 	return (
 		<svg
@@ -14,10 +12,4 @@ export default function IconX({ width, height, color, ...restProps }) {
 			/>
 		</svg>
 	)
-}
-
-IconX.propTypes = {
-	width: PropTypes.string.isRequired,
-	height: PropTypes.string.isRequired,
-	color: PropTypes.string.isRequired,
 }

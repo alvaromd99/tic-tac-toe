@@ -18,7 +18,7 @@ function App() {
 
 	return (
 		<div className='bg-darkBlue min-h-screen flex items-center justify-center'>
-			<div className='flex flex-col gap-6'>
+			<div className='flex flex-col gap-4'>
 				<Header turn={turn} />
 				<Board turn={turn} updateTurn={updateTurn} />
 			</div>
