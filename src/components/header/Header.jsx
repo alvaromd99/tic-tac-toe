@@ -1,8 +1,8 @@
-import IconX from '../icons/IconX'
-import IconO from '../icons/IconO'
-import IconReset from '../icons/IconReset'
+import IconX from '../../icons/IconX'
+import IconO from '../../icons/IconO'
+import IconReset from '../../icons/IconReset'
 
-export const Header = ({ turn }) => {
+export default function Header({ turn }) {
 	return (
 		<div className='flex items-center justify-between'>
 			<div className='flex items-center'>
