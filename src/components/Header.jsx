@@ -3,7 +3,6 @@ import IconO from '../icons/IconO'
 import IconReset from '../icons/IconReset'
 
 export const Header = ({ turn }) => {
-	console.log(turn)
 	return (
 		<div className='flex items-center justify-between'>
 			<div className='flex items-center'>
