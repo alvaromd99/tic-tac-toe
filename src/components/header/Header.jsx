@@ -2,7 +2,7 @@ import IconX from '../../icons/IconX'
 import IconO from '../../icons/IconO'
 import IconReset from '../../icons/IconReset'
 
-export default function Header({ turn }) {
+export default function Header({ turn, resetGame }) {
 	return (
 		<div className='flex items-center justify-between'>
 			<div className='flex items-center'>
@@ -14,7 +14,9 @@ export default function Header({ turn }) {
 				{turn === 'o' && <IconO width='1.4em' height='1em' color='#aabfca' />}
 				<p>TURN</p>
 			</div>
-			<button className='bg-gray w-14 h-14 flex items-center justify-center rounded shadow-2'>
+			<button
+				onClick={resetGame}
+				className='bg-gray w-14 h-14 flex items-center justify-center rounded shadow-2'>
 				<IconReset width='1em' height='1em' color='#1a2b33' />
 			</button>
 		</div>
