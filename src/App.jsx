@@ -1,19 +1,20 @@
 import './App.css'
-import Header from './components/header/Header'
-import Board from './components/board/Board'
-import Footer from './components/footer/Footer'
-import { UseBoard } from './hooks/UseBoard'
+import { useState } from 'react'
+import { GameSelector } from './components/selector/GameSelector'
+import { PlayerMode } from './components/gameModes/PlayerMode'
 
 function App() {
-	const { turn, board, updateBoard, results, resetGame } = UseBoard()
+	const [gameMode, setGameMode] = useState(null)
+
+	const changeGameMode = (mode) => {
+		setGameMode(mode)
+	}
 
 	return (
 		<div className='bg-darkBlue min-h-screen flex items-center justify-center'>
-			<div className='flex flex-col gap-4'>
-				<Header turn={turn} resetGame={resetGame} />
-				<Board board={board} updateBoard={updateBoard} />
-				<Footer results={results} />
-			</div>
+			{gameMode === null && <GameSelector changeGameMode={changeGameMode} />}
+			{gameMode === 'player' && <PlayerMode />}
+			{gameMode === 'cpu' && <h1>CPU MODE</h1>}
 		</div>
 	)
 }
