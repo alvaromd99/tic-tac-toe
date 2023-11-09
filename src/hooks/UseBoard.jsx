@@ -31,6 +31,7 @@ export const UseBoard = () => {
 
 	const resetGame = () => {
 		setBoard(initialState)
+		setTurn(TURNS.X)
 		setWinner(null)
 	}
 
