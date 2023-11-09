@@ -3,30 +3,12 @@ import './App.css'
 import Header from './components/header/Header'
 import Board from './components/board/Board'
 import Footer from './components/footer/Footer'
-
-const TURNS = {
-	X: 'x',
-	O: 'o',
-}
-
-const initialResults = {
-	X: 0,
-	D: 0,
-	O: 0,
-}
-
-const winPatterns = [
-	[0, 1, 2],
-	[3, 4, 5],
-	[6, 7, 8], // Rows
-	[0, 3, 6],
-	[1, 4, 7],
-	[2, 5, 8], // Columns
-	[0, 4, 8],
-	[2, 4, 6], // Diagonals
-]
-
-const initialState = Array(9).fill(null)
+import {
+	TURNS,
+	winPatterns,
+	initialResults,
+	initialState,
+} from './constants/constants'
 
 function App() {
 	const [board, setBoard] = useState(initialState)
@@ -35,7 +17,6 @@ function App() {
 	const [turn, setTurn] = useState(TURNS.X)
 	const [results, setResults] = useState(initialResults)
 
-	/* ----------------------------------------------------------------------- */
 	const updateBoard = (index) => {
 		if (board[index] || winner) return
 
@@ -49,7 +30,10 @@ function App() {
 		if (newWinner) {
 			setWinner(newWinner)
 			updateResults(newWinner)
-			console.log(`El ganador es ${newWinner}`)
+		} else if (checkEndGame(newBoard)) {
+			const draw = false
+			setWinner(draw)
+			updateResults(draw)
 		}
 	}
 
@@ -64,11 +48,14 @@ function App() {
 		return null
 	}
 
+	const checkEndGame = (board) => {
+		return board.every((square) => square !== null)
+	}
+
 	const resetGame = () => {
 		setBoard(initialState)
 		setWinner(null)
 	}
-	/* ----------------------------------------------------------------------- */
 
 	const updateTurn = (turn) => {
 		const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
