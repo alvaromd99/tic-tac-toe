@@ -3,12 +3,8 @@ import './App.css'
 import Header from './components/header/Header'
 import Board from './components/board/Board'
 import Footer from './components/footer/Footer'
-import {
-	TURNS,
-	winPatterns,
-	initialResults,
-	initialState,
-} from './constants/constants'
+import { checkWinner, checkEndGame } from './components/logic/board'
+import { TURNS, initialResults, initialState } from './constants/constants'
 
 function App() {
 	const [board, setBoard] = useState(initialState)
@@ -35,21 +31,6 @@ function App() {
 			setWinner(draw)
 			updateResults(draw)
 		}
-	}
-
-	const checkWinner = (board) => {
-		for (const pattern of winPatterns) {
-			const [a, b, c] = pattern
-
-			if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-				return board[a]
-			}
-		}
-		return null
-	}
-
-	const checkEndGame = (board) => {
-		return board.every((square) => square !== null)
 	}
 
 	const resetGame = () => {
