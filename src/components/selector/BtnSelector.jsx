@@ -8,7 +8,7 @@ export const BtnSelector = ({ index, mode, changeGameMode }) => {
 	console.log(mode)
 	return (
 		<button
-			className={`${className} w-96 h-20 rounded-lg`}
+			className={`${className} w-large h-18 rounded-lg text-xl text-darkBlue font-bold`}
 			onClick={() => changeGameMode(mode)}>
 			{`NEW GAME ${resultName}`}
 		</button>

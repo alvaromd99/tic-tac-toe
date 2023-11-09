@@ -12,7 +12,14 @@ export default {
 		boxShadow: {
 			2: 'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
 		},
-		extend: {},
+		extend: {
+			width: {
+				large: '36rem',
+			},
+			height: {
+				18: '4.5rem',
+			},
+		},
 	},
 	plugins: [],
 }
