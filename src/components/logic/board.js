@@ -14,3 +14,19 @@ export const checkWinner = (board) => {
 export const checkEndGame = (board) => {
 	return board.every((square) => square !== null)
 }
+
+export const getPossibleMoves = (board) => {
+	return board.reduce((moves, square, index) => {
+		if (!square) {
+			moves.push(index)
+		}
+		return moves
+	}, [])
+}
+
+export const getRandomEmptyIndex = (board) => {
+	const possibleMoves = getPossibleMoves(board)
+	const randomIndex = Math.floor(Math.random() * possibleMoves.length)
+
+	return possibleMoves[randomIndex]
+}

@@ -2,9 +2,12 @@ import './App.css'
 import { useState } from 'react'
 import { GameSelector } from './components/selector/GameSelector'
 import { PlayerMode } from './components/gameModes/PlayerMode'
+import { CpuMode } from './components/gameModes/CpuMode'
+
+// TODO Make a back btn so we can go back to the menu and make cpu
 
 function App() {
-	const [gameMode, setGameMode] = useState(null)
+	const [gameMode, setGameMode] = useState('cpu') // <- Null
 
 	const changeGameMode = (mode) => {
 		setGameMode(mode)
@@ -14,7 +17,7 @@ function App() {
 		<div className='bg-darkBlue min-h-screen flex items-center justify-center'>
 			{gameMode === null && <GameSelector changeGameMode={changeGameMode} />}
 			{gameMode === 'player' && <PlayerMode />}
-			{gameMode === 'cpu' && <h1>CPU MODE</h1>}
+			{gameMode === 'cpu' && <CpuMode />}
 		</div>
 	)
 }
