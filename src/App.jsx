@@ -7,7 +7,7 @@ import { CpuMode } from './components/gameModes/CpuMode'
 // TODO Make a back btn so we can go back to the menu and make cpu
 
 function App() {
-	const [gameMode, setGameMode] = useState('cpu') // <- Null
+	const [gameMode, setGameMode] = useState(null) // <- Null
 
 	const changeGameMode = (mode) => {
 		setGameMode(mode)
@@ -17,7 +17,9 @@ function App() {
 		<div className='bg-darkBlue min-h-screen flex items-center justify-center'>
 			{gameMode === null && <GameSelector changeGameMode={changeGameMode} />}
 			{gameMode === 'player' && <PlayerMode />}
-			{gameMode === 'cpu' && <CpuMode />}
+			{(gameMode === 'easy') | (gameMode === 'hard') && (
+				<CpuMode gameMode={gameMode} />
+			)}
 		</div>
 	)
 }

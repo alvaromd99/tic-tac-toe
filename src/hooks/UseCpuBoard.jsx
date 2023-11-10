@@ -6,7 +6,7 @@ import {
 	getRandomEmptyIndex,
 } from '../components/logic/board'
 
-export const UseCpuBoard = () => {
+export const UseCpuBoard = (gameMode) => {
 	const [board, setBoard] = useState(initialState)
 	const [winner, setWinner] = useState(null)
 
@@ -14,10 +14,19 @@ export const UseCpuBoard = () => {
 	const [results, setResults] = useState(initialResults)
 
 	useEffect(() => {
-		if (turn === TURNS.O && winner === null) {
+		if (turn === TURNS.O && winner === null && gameMode === 'easy') {
 			// It's the AI's turn, make a move after a short delay (simulating thinking time)
 			const delay = setTimeout(() => {
 				const emptyIndex = getRandomEmptyIndex(board)
+				updateBoard(emptyIndex, TURNS.O)
+				clearTimeout(delay)
+			}, 500)
+		}
+
+		if (turn === TURNS.O && winner === null && gameMode === 'hard') {
+			// It's the AI's turn, make a move after a short delay (simulating thinking time)
+			const delay = setTimeout(() => {
+				const emptyIndex = getBestMove(board)
 				updateBoard(emptyIndex, TURNS.O)
 				clearTimeout(delay)
 			}, 500)
@@ -64,6 +73,8 @@ export const UseCpuBoard = () => {
 			D: winner === false ? prevResults.D + 1 : prevResults.D,
 		}))
 	}
+
+	const getBestMove = (board) => {}
 
 	return { board, updateBoard, winner, turn, results, resetGame }
 }

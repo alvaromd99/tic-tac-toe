@@ -23,6 +23,7 @@ export const winPatterns = [
 export const initialState = Array(9).fill(null)
 
 export const gameModes = {
-	1: 'cpu',
-	2: 'player',
+	1: 'easy',
+	2: 'hard',
+	3: 'player',
 }

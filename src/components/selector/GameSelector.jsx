@@ -8,9 +8,9 @@ export const GameSelector = ({ changeGameMode }) => {
 			<DisplayIcons />
 			<div className='flex flex-col items-center justify-center gap-4'>
 				{Object.keys(gameModes).map((mode, index) => {
-					const btnNames = ['(VS CPU)', '(VS PLAYER 2)']
+					const btnNames = ['(VS CPU Easy)', '(VS CPU Hard)', '(VS PLAYER 2)']
 					const btnName = btnNames[index] || ''
-					const classNames = ['bg-primary', 'bg-secondary']
+					const classNames = ['bg-primary', 'bg-primary', 'bg-secondary']
 					const className = classNames[index] || ''
 
 					return (
