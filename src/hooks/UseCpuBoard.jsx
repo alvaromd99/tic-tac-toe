@@ -74,7 +74,9 @@ export const UseCpuBoard = (gameMode) => {
 		}))
 	}
 
-	const getBestMove = (board) => {}
+	const getBestMove = (board) => {
+		console.log(board)
+	}
 
 	return { board, updateBoard, winner, turn, results, resetGame }
 }
