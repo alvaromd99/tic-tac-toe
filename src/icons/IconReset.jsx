@@ -4,11 +4,13 @@ export default function IconReset({ width, height, color, ...restProps }) {
 			xmlns='http://www.w3.org/2000/svg'
 			width={width}
 			height={height}
-			viewBox='0 0 32 32'
+			viewBox='0 0 24 24'
 			{...restProps}>
 			<path
-				fill={color}
-				d='M18 28A12 12 0 1 0 6 16v6.2l-3.6-3.6L1 20l6 6l6-6l-1.4-1.4L8 22.2V16a10 10 0 1 1 10 10Z'
+				fill='none'
+				stroke={color}
+				strokeWidth='2'
+				d='M20 8c-1.403-2.96-4.463-5-8-5a9 9 0 1 0 0 18a9 9 0 0 0 9-9m0-9v6h-6'
 			/>
 		</svg>
 	)
