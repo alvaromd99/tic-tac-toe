@@ -2,7 +2,7 @@ import { DisplayIcons } from '../../icons/DisplayIcons'
 import { BtnSelector } from './BtnSelector'
 import { gameModes } from '../../constants/constants'
 
-export const GameSelector = ({ changeGameMode }) => {
+export const GameSelector = () => {
 	return (
 		<div className=' flex flex-col items-center justify-center gap-8'>
 			<DisplayIcons />
@@ -17,7 +17,6 @@ export const GameSelector = ({ changeGameMode }) => {
 						<BtnSelector
 							key={index}
 							mode={gameModes[mode]}
-							changeGameMode={changeGameMode}
 							btnName={btnName}
 							className={className}
 						/>
