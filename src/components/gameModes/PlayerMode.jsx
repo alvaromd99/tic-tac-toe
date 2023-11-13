@@ -4,12 +4,12 @@ import Footer from '../footer/Footer'
 import { UseBoard } from '../../hooks/UseBoard'
 import { BackBtn } from './BackBtn'
 
-export const PlayerMode = ({ changeGameMode }) => {
+export const PlayerMode = () => {
 	const { turn, board, updateBoard, results, resetGame } = UseBoard()
 
 	return (
 		<div className='flex flex-col gap-4'>
-			<BackBtn changeGameMode={changeGameMode} />
+			<BackBtn />
 			<Header turn={turn} resetGame={resetGame} />
 			<Board board={board} updateBoard={updateBoard} />
 			<Footer results={results} />

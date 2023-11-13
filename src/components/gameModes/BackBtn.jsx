@@ -1,6 +1,9 @@
+import { useContext } from 'react'
 import { ArrowLeft } from '../../icons/ArrowLeft'
+import { GameContext } from '../../context/GameContext'
 
-export const BackBtn = ({ changeGameMode }) => {
+export const BackBtn = () => {
+	const { changeGameMode } = useContext(GameContext)
 	return (
 		<div
 			onClick={() => changeGameMode(null)}
