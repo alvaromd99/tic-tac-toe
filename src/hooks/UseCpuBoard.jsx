@@ -4,6 +4,7 @@ import {
 	checkWinner,
 	checkEndGame,
 	getRandomEmptyIndex,
+	getPossibleMoves,
 } from '../components/logic/board'
 
 export const UseCpuBoard = (gameMode) => {
@@ -15,7 +16,6 @@ export const UseCpuBoard = (gameMode) => {
 
 	useEffect(() => {
 		if (turn === TURNS.O && winner === null && gameMode === 'easy') {
-			// It's the AI's turn, make a move after a short delay (simulating thinking time)
 			const delay = setTimeout(() => {
 				const emptyIndex = getRandomEmptyIndex(board)
 				updateBoard(emptyIndex, TURNS.O)
@@ -24,10 +24,9 @@ export const UseCpuBoard = (gameMode) => {
 		}
 
 		if (turn === TURNS.O && winner === null && gameMode === 'hard') {
-			// It's the AI's turn, make a move after a short delay (simulating thinking time)
 			const delay = setTimeout(() => {
-				const emptyIndex = getBestMove(board)
-				updateBoard(emptyIndex, TURNS.O)
+				const bestMove = getBestMove(board)
+				updateBoard(bestMove, TURNS.O)
 				clearTimeout(delay)
 			}, 500)
 		}
@@ -75,7 +74,62 @@ export const UseCpuBoard = (gameMode) => {
 	}
 
 	const getBestMove = (board) => {
-		console.log(board)
+		return minmax(board, TURNS.O).index
+	}
+
+	const minmax = (board, currentPlayer) => {
+		const emptySquares = getPossibleMoves(board)
+		const winner = checkWinner(board)
+
+		if (winner === TURNS.X) {
+			return { score: -10 }
+		} else if (winner === TURNS.O) {
+			return { score: 10 }
+		} else if (emptySquares.length === 0) {
+			return { score: 0 }
+		}
+
+		const moves = []
+
+		for (let i = 0; i < emptySquares.length; i++) {
+			const move = {}
+			move.index = emptySquares[i]
+
+			board[emptySquares[i]] = currentPlayer
+
+			if (currentPlayer === TURNS.O) {
+				const result = minmax(board, TURNS.X)
+				move.score = result.score
+			} else {
+				const result = minmax(board, TURNS.O)
+				move.score = result.score
+			}
+
+			board[emptySquares[i]] = null
+
+			moves.push(move)
+		}
+
+		let bestMove
+		if (currentPlayer === TURNS.O) {
+			let bestScore = -10000
+			for (let i = 0; i < moves.length; i++) {
+				if (moves[i].score > bestScore) {
+					bestScore = moves[i].score
+					bestMove = i
+				}
+			}
+		} else {
+			let bestScore = 10000
+			for (let i = 0; i < moves.length; i++) {
+				if (moves[i].score < bestScore) {
+					bestScore = moves[i].score
+					bestMove = i
+				}
+			}
+		}
+
+		return moves[bestMove]
 	}
 
 	return { board, updateBoard, winner, turn, results, resetGame }
